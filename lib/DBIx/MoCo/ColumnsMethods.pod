@@ -1,0 +1,63 @@
+=head1 NAME
+
+DBIx::MoCo::ColumnsMethods - Additional *_columns methods for MoCo
+
+=head1 SYNOPSIS
+
+  package My::MoCo::Table;
+  use DBIx::MoCo::ColumnsMethods;
+  
+  __PACKAGE__->datetime_columns(qw(created_on));
+  __PACKAGE__->struct_columns(qw(jsondata));
+
+=head1 DESCRIPTION
+
+The C<DBIx::MoCo::ColumnsMethods> package exports several C<*_columns>
+methods, shortcut definitions for MoCo's inflate/deflate.
+
+=head1 METHODS
+
+The module exports following functions, which are all intended to be
+invoked as class methods:
+
+=over 4
+
+=item * datetime_columns
+
+=item * fixed_length_columns
+
+=item * fixed_length_utf8_columns
+
+=item * struct_columns
+
+=back
+
+For their definitions see source code of the module.
+
+=head1 SEE ALSO
+
+L<DBIx::MoCo>.  Note that C<utf8_columns> method is defined in
+L<DBIx::MoCo>.
+
+=head1 HISTORY
+
+=over 4
+
+=item 1.0 (2011-04-25)
+
+First release as a standalone module.
+
+=back
+
+=head1 AUTHOR
+
+Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>.
+
+=head1 LICENSE
+
+Copyright 2007-2010 Hatena <http://www.hatena.ne.jp/>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
