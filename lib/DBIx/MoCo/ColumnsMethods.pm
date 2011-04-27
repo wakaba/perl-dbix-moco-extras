@@ -74,7 +74,7 @@ sub struct_columns {
         no strict 'refs';
         *{$class . "\::$column"} = sub {
             my $self = shift;
-            $self->{"_struct_$column"} ||= eval { json_bytes2perl ($self->param($column) || {}) } || {};
+            $self->{"_struct_$column"} ||= eval { json_bytes2perl ($self->param($column) || '{}') } || {};
 
             if (@_ % 2 == 0) {
                 while (@_) {
