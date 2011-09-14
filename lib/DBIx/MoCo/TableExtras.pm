@@ -3,7 +3,7 @@ use strict;
 use warnings;
 our $VERSION = '1.0';
 
-our $MAX_VALUES_PER_QUERY = 100;
+our $MAX_VALUES_PER_QUERY ||= 100;
 
 sub search_where_in_each {
     my ($class, $column, $values, $code, %args) = @_;
