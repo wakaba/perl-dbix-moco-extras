@@ -1,7 +1,7 @@
 package DBIx::MoCo::ColumnsMethods;
 use strict;
 use warnings;
-our $VERSION = '1.0';
+our $VERSION = '2.0';
 use DateTime::Format::MySQL;
 use JSON::Functions::XS qw(perl2json_bytes json_bytes2perl);
 use Encode;
@@ -9,6 +9,7 @@ use Exporter::Lite;
 
 our @EXPORT = qw(
     datetime_columns
+    datetime_jst_columns
     fixed_length_columns
     fixed_length_utf8_columns
     struct_columns
@@ -24,6 +25,38 @@ sub datetime_columns {
             $_ => {
                 deflate => sub { $_[0] ? DateTime::Format::MySQL->format_datetime(shift) : '0000-00-00 00:00:00' },
                 inflate => sub { $_[0] && $_[0] ne '0000-00-00 00:00:00' && DateTime::Format::MySQL->parse_datetime(shift) },
+            }
+        );
+    }
+}
+
+sub datetime_jst_columns {
+    my $class = shift;
+    my @columns = ref $_[0] eq 'ARRAY' ? @$_[0] : @_;
+
+    # tz=UTC-floating
+    foreach (@columns) {
+        $class->inflate_column(
+            $_ => {
+                deflate => sub {
+                    if ($_[0]) {
+                        my $dt = $_[0]->clone;
+                        $dt->set_time_zone('UTC');
+                        $dt->set_time_zone('Asia/Tokyo');
+                        return DateTime::Format::MySQL->format_datetime($dt);
+                    } else {
+                        return '0000-00-00 00:00:00';
+                    }
+                },
+                inflate => sub {
+                    if ($_[0] && $_[0] ne '0000-00-00 00:00:00') {
+                        my $dt = DateTime::Format::MySQL->parse_datetime(shift);
+                        $dt->set_time_zone('Asia/Tokyo');
+                        return $dt;
+                    } else {
+                        return undef;
+                    }
+                },
             }
         );
     }

@@ -24,6 +24,8 @@ invoked as class methods:
 
 =item * datetime_columns
 
+=item * datetime_jst_columns
+
 =item * fixed_length_columns
 
 =item * fixed_length_utf8_columns
@@ -47,6 +49,10 @@ L<DBIx::MoCo>.
 
 First release as a standalone module.
 
+=item 2.0 (2011-09-14)
+
+Added C<datetime_jst_columns>.
+
 =back
 
 =head1 AUTHOR
@@ -55,7 +61,7 @@ Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>.
 
 =head1 LICENSE
 
-Copyright 2007-2010 Hatena <http://www.hatena.ne.jp/>.
+Copyright 2007-2011 Hatena <http://www.hatena.ne.jp/>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
