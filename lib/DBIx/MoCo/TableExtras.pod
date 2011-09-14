@@ -30,11 +30,11 @@ A shortcut for:
 ... but it wouldn't issue any query if C<@$values> is empty, and it
 would split the query if C<@$values> contains many items.
 
+=back
+
 =head1 SEE ALSO
 
 L<DBIx::MoCo>.
-
-=back
 
 =head1 HISTORY
 
