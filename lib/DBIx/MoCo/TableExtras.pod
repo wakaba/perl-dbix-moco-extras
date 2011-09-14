@@ -1,0 +1,60 @@
+=head1 NAME
+
+DBIx::MoCo::TableExtras - Extra methods for table classes
+
+=head1 SYNOPSIS
+
+  package Example::MoCo;
+  use base qw(DBIx::MoCo DBIx::MoCo::TableExtras);
+
+=head1 DESCRIPTION
+
+The C<DBIx::MoCo::TableExtras> module provides an additional method
+for MoCo table classes.
+
+=head1 CLASS METHOD
+
+=over 4
+
+=item TABLE_CLASS->search_where_in_each($column => $values, CODE, where => {WHERE})
+
+A shortcut for:
+
+  TABLE_CLASS->search(
+    where => {
+      WHERE,
+      $column => {-in => $values},
+    },
+  )->each(CODE);
+
+... but it wouldn't issue any query if C<@$values> is empty, and it
+would split the query if C<@$values> contains many items.
+
+=head1 SEE ALSO
+
+L<DBIx::MoCo>.
+
+=back
+
+=head1 HISTORY
+
+=over 4
+
+=item 1.0 (2011-09-14)
+
+New module.
+
+=back
+
+=head1 AUTHOR
+
+Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>.
+
+=head1 LICENSE
+
+Copyright 2011 Hatena <http://www.hatena.ne.jp/>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
