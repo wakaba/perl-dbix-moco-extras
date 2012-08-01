@@ -1,0 +1,4 @@
+List::Rubyish
+Test::Class
+Test::More
+Test::mysqld
