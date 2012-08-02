@@ -1,0 +1,69 @@
+=head1 NAME
+
+DBIx::MoCo::Query - MoCo query object
+
+=head1 DESCRIPTION
+
+SQL のクエリを表すクラスです。主に Pager から使います。
+
+このクラスのインスタンスは 1SQL の LIMIT 節以外を保持します。
+
+=head1 METHODS
+
+=over 4
+
+=item $query = Query->new(%args)
+
+%args のキーとしては、以下が使えます:
+
+=over 4
+
+=item model
+
+MoCo のクラス名
+
+=item where,order,field,group,force_index
+
+MoCo の search に渡すパラメータ
+
+=back
+
+=item $query->search
+
+model->search します。
+
+=item $query->search($offset, $limit)
+
+offset, limit をそれぞれ設定して model->search します。
+
+=item $query->find
+
+DB から 1 つだけ引きます。
+
+=back
+
+=head1 SEE ALSO
+
+L<DBIx::MoCo>.
+
+=head1 AUTHORS
+
+Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>.
+
+=head1 ACKNOWLEDGEMENTS
+
+Original version of L<DBIx::MoCo::Query> was authored by motemen as
+part of Ugomemo Hatena project, then modified by mechairoi, hitode909,
+and wakabatan.  Original version of L<DBIx::MoCo::Query::Mapped> was
+developed by Wakaba as part of Hatena Message 2010 project.  Original
+version of L<DBIx::MoCo::Query::LazyMapped> was developed by
+mechairoi.
+
+=head1 LICENSE
+
+Copyright 2008-2012 Hatena <http://www.hatena.ne.jp/>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
