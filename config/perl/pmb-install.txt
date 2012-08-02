@@ -42,6 +42,7 @@ SQL::Abstract~1.73
 URI~1.60
 Math::Round~0.06
 File::ShareDir::Install~0.04
+Class::Accessor~0.34
 Class::Accessor::Lite~0.05
 Test::mysqld~0.14
 Path::Class~0.26

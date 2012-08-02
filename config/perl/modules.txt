@@ -1,3 +1,4 @@
+Class::Data::Inheritable
 DateTime::Format::MySQL
 Encode
 Exporter::Lite

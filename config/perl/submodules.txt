@@ -1,1 +1,2 @@
 git://github.com/hatena/DBIx-MoCo
+git://github.com/wakaba/perl-test-moremore
